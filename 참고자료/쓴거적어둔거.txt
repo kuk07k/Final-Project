@@ -1,0 +1,25 @@
+연결
+result=SQLConnect(ConnID1, "Provider=SQLOLEDB.1;Persist Security Info=True;User ID=sa;Password=p@ssw0rd!;Initial Catalog=intouch_db;Data Source=127.0.0.1;");
+result=SQLSelect(ConnID1,"Line1","DB_TEST","","");
+result=SQLNext(ConnID1);
+
+< > 탐색
+result=SQLPrev(ConnID1);
+result=SQLNext(ConnID1));
+
+업데이트
+result=SQLUpdate(ConnID1,"Line1","DB_TEST","CycleTime=3");
+
+인서트
+result=SQLEnd(ConnID1);
+result=SQLInsert(ConnID1,"Line1","DB_TEST");
+
+
+
+바인드리스트 DB_TEST
+
+데이터베이스 intouch_db
+테이블 Line1
+열 Volt(float), 
+    Ampere(float),
+    CycleTime(int)

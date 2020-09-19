@@ -1,0 +1,62 @@
+DIM HH AS INTEGER;
+DIM MM AS INTEGER;
+DIM SS AS INTEGER;
+DIM TT AS MESSAGE;
+
+IF TotalTime / 3600 > 0 THEN
+    HH = TotalTime / 3600;
+
+    IF HH / 10 > 0 THEN
+        TT = "[" + Text(HH, "#") ;
+    ELSE
+        TT = "[" + "0" + Text(HH, "#");
+    ENDIF;
+
+    MM = (TotalTime - (3600 * HH)) / 60;
+    
+    IF MM / 10 > 0  THEN
+        TT = TT +  " : " + Text(MM, "#") + " : ";
+    ELSE
+        TT = TT + " : " + "0" + Text(MM, "#") + " : ";    
+    ENDIF;
+
+    SS = TotalTime - ((3600 * HH) + (MM * 60));
+
+    IF SS / 10 > 0  THEN
+        TT = TT +  Text(SS, "#") + "]"; 
+    ELSE
+        TT = TT + "0" + Text(SS, "#") + "]"; 
+    ENDIF;
+RETURN TT;
+
+ELSE IF TotalTime / 60 > 0  THEN
+    MM = TotalTime / 60;
+    TT = "[00";
+
+    IF MM / 10 > 0  THEN
+        TT = TT +  " : " + Text(MM, "#") + " : ";
+    ELSE
+        TT = TT + " : " + "0" + Text(MM, "#") + " : ";    
+    ENDIF;
+
+    SS = TotalTime - (MM * 60);
+
+    IF SS / 10 > 0  THEN
+        TT = TT +  Text(SS, "#") + "]"; 
+    ELSE
+        TT = TT + "0" + Text(SS, "#") + "]"; 
+
+
+RETURN TT;  
+ENDIF;
+
+ELSE
+    TT = "";
+    IF TotalTime / 10 > 0  THEN
+        TT = Text(TotalTime,"#") + "]"; 
+    ELSE
+        TT = "0" + Text(TotalTime,"#") + "]"; 
+    ENDIF;
+RETURN "[00 : 00 : "+ TT;
+ENDIF;
+ENDIF;

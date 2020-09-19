@@ -1,0 +1,124 @@
+{***************************************************************************************************************************************}
+{* 1.Function Name : fnTranslog                                         
+{* 2.Comment       : Translog Insert                                 
+{* 3.Argument :      strTransName      (PALLET=실적, CHECK=바코드유효성검사)  
+{*                   realTransID    (LT_PLC_TRANSLOG.Trans_ID)                                          
+{*                   strBarID                                          
+{*                   strWC                                           
+{*                   strPalletGB                                     
+{*                   intCnt                                          
+{*                   intRst                                          
+{***************************************************************************************************************************************}
+DIM strQuery AS MESSAGE;
+DIM intReturnValue AS INTEGER;
+DIM strPartialFlag AS MESSAGE;
+
+strPartialFlag = "N";
+IF strTransName == "PALLET" THEN
+    IF intRst == 3 THEN
+        { 부분적재 }
+        strPartialFlag = "Y";
+    ENDIF;
+ENDIF;
+
+IF realTransID < 1 THEN
+    {// 신규 trans id 생성}
+    CALL fnGetTransID();
+    realTransID = mrTransID;
+ENDIF;
+
+{// LT_PLC_TRANSLOG Insert }
+ResultCode = SQLSetStatement( ConnID, "        INSERT INTO LT_PLC_TRANSLOG( ");
+ResultCode = SQLAppendStatement( ConnID, "            TRANS_ID      ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            TRANS_NAME    ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            COMP_CD       ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            PLANT_CD      ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            WC_CD         ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            PALLET_GB     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            PALLET_BARID  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_CNT       ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            PARTIAL_FLAG  ,  ");
+
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_01     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_02     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_03     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_04     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_05     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_06     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_07     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_08     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_09     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_10     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_11     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            LOT_NO_12     ,  ");
+
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_01  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_02  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_03  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_04  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_05  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_06  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_07  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_08  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_09  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_10  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_11  ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            SUBLOT_NO_12  ,  ");
+
+ResultCode = SQLAppendStatement( ConnID, "            CREATE_DATE   ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            CREATE_BY        ");
+
+ResultCode = SQLAppendStatement( ConnID, "          ) VALUES ( ");
+ResultCode = SQLAppendStatement( ConnID, "             " + Text(realTransID, "#") +  ",  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + strTransName +  "'         ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '1000'                          ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '1000'                          ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + strWC +  "'                ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + strPalletGB +  "'          ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + strBarID +  "'             ,  ");
+ResultCode = SQLAppendStatement( ConnID, "             " + Text(intCnt, "#") +  "     ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + strPartialFlag + "'        ,  ");
+
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot01 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot02 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot03 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot04 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot05 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot06 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot07 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot08 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot09 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot10 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot11 + "'               ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmLot12 + "'               ,  ");
+
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot01 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot02 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot03 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot04 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot05 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot06 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot07 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot08 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot09 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot10 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot11 + "'            ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + mmSubLot12 + "'            ,  ");
+
+ResultCode = SQLAppendStatement( ConnID, "            SYSDATE                         ,  ");
+ResultCode = SQLAppendStatement( ConnID, "            '" + "INTOUCH" + "'                ");
+ResultCode = SQLAppendStatement( ConnID, "            )  ");
+ResultCode = SQLPrepareStatement( ConnID, SQLHandle ); 
+ResultCode = SQLExecute( ConnID, "CM_TB_BINDLIST", SQLHandle ); 
+
+IF ResultCode == 0 THEN
+    CALL fnLogMsgList( "Translog", "[OK] " + strTransName + ":" + strWC + ":" + strPalletGB + ":" + strBarID + ":" + Text(realTransID, "#"));
+    intReturnValue = 0;
+ELSE
+    CALL fnLogMsgList( "Translog", "[NG] "+ strTransName + ":" + strWC + ":" + strPalletGB + ":" + strBarID + ":" + Text(realTransID, "#") + ":" + Text(ResultCode, "#") );
+    intReturnValue = 1;
+ENDIF;
+
+ResultCode = SQLClearStatement( ConnID, SQLHandle ); 
+
+RETURN intReturnValue;

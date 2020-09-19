@@ -1,0 +1,101 @@
+*텍스트 입력부 == WD1219_B_CBar
+CALL fnListBoxMsg( "lstWD1219_B", "CBar" ,  WD1219_B_CBar);
+ 
+*텍스트 출력부 == WD1219_B_WBar
+CALL fnListBoxMsg( "lstWD1219_B", "WBar" ,  WD1219_B_WBar);
+
+*리스트 출력부 == lstWD1219_B
+
+=============================================================================
+
+{//---------------------------------------------------------------- }
+{// 1.Function Name:  fnListBoxMsg                                  }
+{// 2.Function Type:  Quick Function                                }
+{// 3.Argument :      argListBox ( ListBox Name  )                  }
+{// 3.Argument :      argLabel   ( Message Label )                  }
+{//                   argBodyMsg ( Message Body  )                  }
+{// 4.Comment :       Display Message to ListBox                    }
+{//---------------------------------------------------------------- }
+
+DIM strDisplayText AS MESSAGE;
+DIM strDisplayLabel AS MESSAGE;
+
+DIM strListBox AS MESSAGE;
+DIM strFileName AS MESSAGE;
+DIM strFilePath AS MESSAGE;
+DIM strCurrDate AS MESSAGE;
+DIM strCurrTime AS MESSAGE;
+
+DIM i AS INTEGER;
+DIM j AS INTEGER;
+DIM t AS INTEGER;
+DIM intLength AS INTEGER;
+DIM intRow AS INTEGER;
+DIM intRowCnt AS INTEGER;
+DIM intDelRowCnt AS INTEGER;
+
+intLength = 50;    { ListBox colunm limit }
+intRowCnt = 50;    { ListBox row limit }
+strCurrDate   = Text( $Year, "0000" ) + Text( $Month, "00" ) + Text( $Day, "00" );
+strCurrTime   = Text( $Hour, "00" ) + ":" + Text( $Minute, "00" ) + ":" + Text( $Second, "00" );
+
+{// ListBox 지정}
+strListBox      = argListBox;
+strDisplayLabel = argLabel;
+strDisplayText  = argBodyMsg;
+{//----------------------------------------------------
+{//t = StringLen( strDisplayLabel );
+{//if t < 10 then
+{//    strDisplayLabel = strDisplayLabel + StringSpace(10 - t);    {// 라벨의 왼쪽에 10자리까지 공백을 채움}
+{//endif;
+{//----------------------------------------------------}
+
+{//---------------------------------------------------------------- }
+{// 로그 기록                                                       }
+{//---------------------------------------------------------------- }
+{// 로그 경로 }
+strFilePath     = InfoInTouchAppDir() + "\Log\";
+{// 로그 파일명 }
+strFileName = strCurrDate + "_" + strListBox + ".log";
+
+{// 로그 기록}
+FileWriteMessage(strFilePath + strFileName, -1, strCurrTime + StringSpace(1) + "[" + strDisplayLabel + "]" + StringSpace(1), 0); 
+FileWriteMessage(strFilePath + strFileName, -1, argBodyMsg, 1);  
+{//---------------------------------------------------------------- }
+
+{//---------------------------------------------------------------- }
+{// 메세지 화면 표시                                                }
+{//---------------------------------------------------------------- }
+
+{// ListBox의 Item 수 가져오기}
+GetPropertyI( strListBox + ".ListCount", miRowCnt );
+
+IF miRowCnt > intRowCnt THEN
+    intDelRowCnt = miRowCnt - intRowCnt;     
+    FOR i = 1 TO intDelRowCnt
+        wcDeleteItem( strListBox, 1 );
+    NEXT;
+ENDIF;
+
+{리스트박스의 한행의 최대길이를 기준으로 Add 되는 row수}
+intRow = StringLen( strDisplayText ) / intLength;
+
+{ListBox에 로그 표시}
+FOR j = 0 TO intRow + 1
+    IF StringLen( strDisplayText ) > 0 THEN
+        IF j == 0 THEN
+            { 메세지의 첫행 }
+            wcAddItem( strListBox,  strCurrTime + "[" + strDisplayLabel + "]" + StringMid( strDisplayText, 1, intLength ) );
+        ELSE
+            wcAddItem( strListBox, StringChar(9) + StringMid( strDisplayText, 1, intLength ) );      {// StringChar(9)는 Tab키임 }  
+        ENDIF;
+        {첫행에 표시되고 남은 메세지}
+        strDisplayText = StringMid( strDisplayText, intLength + 1, StringLen( strDisplayText ) - intLength );
+    ENDIF;
+NEXT;
+
+{// ListBox의 Item 수 가져오기}
+GetPropertyI( strListBox + ".ListCount", miRowCnt ); 
+{ListBox의 top row index 지정}
+SetPropertyI( strListBox + ".Topindex", miRowCnt );
+{//---------------------------------------------------------------- }

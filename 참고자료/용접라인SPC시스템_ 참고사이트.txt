@@ -1,0 +1,32 @@
+=========================================================
+=========================================================
+
+* 삼미정보시스템
+http://sammicomputer.co.kr/sub/sub04_05.php
+
+* 인터치 참고
+https://snakecharm.tistory.com/category/HMI/InTouch%2010.1
+
+https://vidaconcerveza.tistory.com/category/HMI/Intouch
+
+* OPC 서버
+http://www.samboo.co.kr/data/OPCserver.pdf
+
+* HMI 종류
+http://www.dasontech.com/product/list.asp
+
+* Frame 참고
+https://www.youtube.com/watch?v=Ei6UxtDne7w
+
+* 지멘스 PLC
+https://m.blog.naver.com/PostView.nhn?blogId=neolus&logNo=221697756177&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+* 용접 데이터부분 참고
+http://howoninc2.skyd.co.kr/images/Database.pdf
+
+* 메인 구성화면 참고
+https://www.miracom.co.kr/static_root/userUpload/2019/04/05/1554426660016458C6.pdf
+
+http://smart.moatt.co.kr/product/mes.php
+=========================================================
+=========================================================

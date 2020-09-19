@@ -1,0 +1,13 @@
+:BindListName,DB_TEST
+userid,userid
+pwd,pwd
+:BindListName,LINE1_BINDLIST
+Welding_EelectricFlow,ElectricFlow
+Welding_Voltage,Voltage
+Welding_Time,Time
+Welding_ColdTemp,ColdTemp
+Welding_Air,Air
+Welding_KJ,KJ
+Welding_TaJum,TaJum
+$TimeString,CREATE_DATE
+Welding_TongJun,TongJun

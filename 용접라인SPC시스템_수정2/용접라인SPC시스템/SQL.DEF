@@ -1,0 +1,4 @@
+:BindListName,DB_TEST
+DB_Volt,Volt
+DB_Ampere,Ampere
+DB_CycleTime,CycleTime

@@ -1,0 +1,50 @@
+Begin DDE Information.
+    Last DDE Source:	5
+Begin DDE Source Definition.
+    Source Name:		OPC
+    Application Name:		\\localhost\FSGateway
+    Topic Name:			OPC_DeviceGroup
+    DDE Source ID:		1
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		Galaxy
+    Application Name:		\\NA\NA
+    Topic Name:			NA
+    DDE Source ID:		2
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			3
+    Begin DDE Points
+        kep5;0024:  kep5
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		KEP
+    Application Name:		servermain
+    Topic Name:			Channel_1_Device_1
+    DDE Source ID:		4
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+        Welding_TaJum;0038:  Tag_9
+        Welding_TongJun;0037:  Tag_8
+        Welding_Speed;0036:  Tag_7
+        Welding_KJ;0035:  Tag_6
+        Welding_Air;0034:  Tag_5
+        Welding_ColdTemp;0033:  Tag_4
+        Welding_Time;0032:  Tag_3
+        Welding_EelectricFlow;0031:  Tag_2
+        Welding_Voltage;0030:  Tag_1
+        kep2;002F:  Tag1
+        kep1;002D:  Tag_10
+        kep3;0025:  Tag3
+        kep4;0023:  Tag1
+    End DDE Points
+End DDE Source Definition.
+End DDE Information.

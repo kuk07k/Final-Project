@@ -1,0 +1,15 @@
+    1 Main
+    7 Exit
+    8 Dressing_Alarm
+    9 Dressing_Progress
+   10 Dressing_Complete
+   11 Plan_Complete
+   12 DATA
+   14 Line1
+   16 Changing_Alarm
+   17 Changing_Complete
+   18 Changing_Progress
+   23 Line2
+   24 Line3
+   25 Line4
+   26 Line5

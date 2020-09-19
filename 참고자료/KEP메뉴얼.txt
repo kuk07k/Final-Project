@@ -1,0 +1,50 @@
+================================================
+
+
+insert.txt를 활용하여 intouch에서 DB로 저장하기
+
+- opchub.com 접속 ▶ KepServerEX V6 설치
+- 메뉴얼 다운로드 
+- Project ▶FastDDE/SuiteLink ▶ Enable FastDDE/SuiteLink connections ▶Yes로 바꾸기 
+	: suitelink를 사용하겠다.
+
+
+server_runtime == application name
+
+Aliases == Alias name 이 InTouch의 Access Name 설정시 “Topic” name 이 된다.
+
+
+
+============ 인터치에 OPC서버 랜덤값 받아오기 ============
+
+* 항목에 주는 속성
+Ctrl + T : 태그목록
+Value Display - Analog - Expression : 태그입력
+
+* Access Name
+Access Name : KEP
+Application Name : servermain
+Topic Name : Channel_1_Device_1 (Alias 활용)
+SuiteLink
+
+* 태그 속성
+I/O Real 
+Item : Tag 이름
+
+Tag_1 : 전압
+Tag_2 : 전류
+Tag_3 : 용접시간
+Tag_4 : 냉각수 온도
+Tag_5 : 공압
+Tag_6 : 용접열량
+Tag_7 : 용접속도
+Tag_8 : 통전현황
+
+* PLC
+PLC 제어, PLC 이더넷 프로토콜 통신, 다기종 프로토콜 통신
+
+* SW
+C#, GUI 제작, OPCserver연동
+
+* 데이터
+생산 라인 현황, 공정별 가용율, 생산 지표, 제조리드타임

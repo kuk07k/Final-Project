@@ -1,0 +1,105 @@
+Begin DDE Information.
+    Last DDE Source:	7
+Begin DDE Source Definition.
+    Source Name:		OPC
+    Application Name:		\\localhost\FSGateway
+    Topic Name:			OPC_DeviceGroup
+    DDE Source ID:		1
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		Galaxy
+    Application Name:		\\NA\NA
+    Topic Name:			NA
+    DDE Source ID:		2
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			3
+    Begin DDE Points
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		KEP
+    Application Name:		servermain
+    Topic Name:			Channel_1_Device_1
+    DDE Source ID:		3
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+        01_WeldingVoltage;003A:  Tag_1
+        01_WeldingKJ;0035:  Tag_6
+        01_WeldingEelectricFlow;0033:  Tag_2
+        01_WeldingColdTemp;0031:  Tag_4
+        01_WeldingAir;002F:  Tag_5
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		KEP2
+    Application Name:		servermain
+    Topic Name:			Channel_1_Device_2
+    DDE Source ID:		4
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+        02_WeldingVoltage;0058:  Tag_1
+        02_WeldingKJ;0053:  Tag_6
+        02_WeldingEelectricFlow;0051:  Tag_2
+        02_WeldingColdTemp;004F:  Tag_4
+        02_WeldingAir;004D:  Tag_5
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		KEP3
+    Application Name:		servermain
+    Topic Name:			Channel_1_Device_3
+    DDE Source ID:		5
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+        03_WeldingVoltage;009F:  Tag_1
+        03_WeldingKJ;0090:  Tag_6
+        03_WeldingEelectricFlow;008A:  Tag_2
+        03_WeldingColdTemp;0084:  Tag_4
+        03_WeldingAir;007E:  Tag_5
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		KEP4
+    Application Name:		servermain
+    Topic Name:			Channel_1_Device_4
+    DDE Source ID:		6
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+        04_WeldingVoltage;00A0:  Tag_1
+        04_WeldingKJ;0091:  Tag_6
+        04_WeldingEelectricFlow;008B:  Tag_2
+        04_WeldingColdTemp;0085:  Tag_4
+        04_WeldingAir;007F:  Tag_5
+    End DDE Points
+End DDE Source Definition.
+Begin DDE Source Definition.
+    Source Name:		KEP5
+    Application Name:		servermain
+    Topic Name:			Channel_1_Device_5
+    DDE Source ID:		7
+    Request Initial Data:	1
+    Always Advise:		0
+    SuiteLink:			1
+    Begin DDE Points
+        05_WeldingVoltage;00A1:  Tag_1
+        05_WeldingKJ;0092:  Tag_6
+        05_WeldingEelectricFlow;008C:  Tag_2
+        05_WeldingColdTemp;0086:  Tag_4
+        05_WeldingAir;0080:  Tag_5
+    End DDE Points
+End DDE Source Definition.
+End DDE Information.
